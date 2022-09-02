@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/steve.tscn" type="PackedScene" id=1]
+[ext_resource path="res://script/steve.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 15, 1, 15 )
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 30, 2, 30 )
+
+[node name="level" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="box" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 12.498, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="box"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="box"]
+mesh = SubResource( 2 )
+
+[node name="box2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 12.498, -3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="box2"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="box2"]
+mesh = SubResource( 2 )
+
+[node name="box3" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 12.498, 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="box3"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="box3"]
+mesh = SubResource( 2 )
+
+[node name="box4" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 12.498, 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="box4"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="box4"]
+mesh = SubResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.834473, 0.551049, 0, -0.551049, 0.834473, 0, 11.0566, 24.1297 )
+
+[node name="floor" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.961016, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="floor"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="floor/CollisionShape"]
+mesh = SubResource( 4 )
+
+[node name="steve" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+script = ExtResource( 2 )
